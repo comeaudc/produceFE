@@ -14,6 +14,7 @@ export default function AddProduce() {
 
   function handleChange(e) {
     if (e.target.name == 'stocked') {
+      ``;
       setFormData({ ...formData, stocked: !formData.stocked });
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,6 +24,9 @@ export default function AddProduce() {
   async function handleSubmit(e) {
     try {
       e.preventDefault();
+
+      formData.price = '$' + formData.price;
+
       let res = await axios.post(
         'http://localhost:3000/api/produce/',
         formData
